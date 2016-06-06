@@ -6,5 +6,13 @@
 }
 
 #BACK{
-	-fx-background-image: url("img/back-icon.png") no-repeat;
+	-fx-background-image: url("img/Arrows-Back-icon.png");
+	-fx-background-position: center center; 
+	-fx-background-repeat: stretch;
 }	
+
+#btn_message{
+	-fx-background-image: url("img/message.png");
+	-fx-background-position: center center; 
+	-fx-background-repeat: stretch;
+}

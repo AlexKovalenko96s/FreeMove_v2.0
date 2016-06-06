@@ -51,5 +51,6 @@
             <Font name="Times New Roman Bold Italic" size="14.0" />
          </font>
       </Button>
+      <Button fx:id="BACK" alignment="CENTER" cache="true" layoutX="30.0" layoutY="55.0" mnemonicParsing="false" onAction="#back" opacity="0.5" prefHeight="55.0" prefWidth="100.0" />
    </children>
 </AnchorPane>

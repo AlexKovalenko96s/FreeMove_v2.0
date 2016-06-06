@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,9 +20,11 @@ public class Controller_signUp {
 	TextField textLOGIN, textEMAIL, textPASSWORD, textREPEAT_PASSWORD;
 	@FXML
 	Label login_uncorrect, password_uncorrect, email_uncorrect, login_correct, email_correct, password_correct, all;
+	@FXML Button BACK;
 	public static String LOGIN = "not_enter";
 	public static String PASSWORD = "not_enter";
 	public static boolean correct = false;
+	static String way;
 
 	public void login(ActionEvent e) throws IOException{
 		Scene login = new Scene(FXMLLoader.load(getClass().getResource("FXML/Login.fxml")));
@@ -71,21 +74,18 @@ public class Controller_signUp {
 
 						else if (textEMAIL.getText().contains(" ") != true && textEMAIL.getText().contains("@") == true) {
 
+							LOGIN = textLOGIN.getText();
+							PASSWORD = textPASSWORD.getText();
 							email_uncorrect.setVisible(false);
 							email_correct.setVisible(true);
 
-							myStmt.executeUpdate();
-							
-							LOGIN = textLOGIN.getText();
-							PASSWORD = textPASSWORD.getText();
-							
+							myStmt.executeUpdate();													
 							correct = true;
 							
 							Scene main = new Scene(FXMLLoader.load(getClass().getResource("FXML/Main.fxml")));
 							main.getStylesheets().add(getClass().getResource("./application.css").toExternalForm());
 							Stage main_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 							main_stage.setScene(main);
-							
 							main_stage.show();
 						}
 					}
@@ -95,5 +95,13 @@ public class Controller_signUp {
 		else{
 			all.setVisible(true);
 		}
+	}
+	
+	public void back(ActionEvent e) throws IOException{
+		Scene back = new Scene(FXMLLoader.load(getClass().getResource(way)));
+		back.getStylesheets().add(getClass().getResource("./application.css").toExternalForm());
+		Stage back_stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		back_stage.setScene(back);
+		back_stage.show();
 	}
 }

@@ -93,5 +93,6 @@
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Label>
+      <Button fx:id="BACK" layoutX="30.0" layoutY="55.0" mnemonicParsing="false" onAction="#back" opacity="0.5" prefHeight="55.0" prefWidth="100.0" />
    </children>
 </AnchorPane>
