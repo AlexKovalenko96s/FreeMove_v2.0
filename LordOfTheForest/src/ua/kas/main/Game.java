@@ -16,15 +16,20 @@ public class Game extends Canvas implements Runnable {
 	public static final int HEIGHT = WIDTH / 12 * 9;
 	public static final int SCALE = 2;
 
+	public static int LEVEL = 1;
+
 	public final static String TITLE = "Lord of the Forest";
 
 	private BufferedImage backgroundIMG = null;
+	private BufferedImage level1 = null;
 
 	private Thread thread;
 
 	private boolean running = false;
 
 	private BufferedImageLoader loader;
+	private Texture texture;
+	private Handler handler;
 
 	public synchronized void start() {
 		if (running) {
@@ -37,7 +42,12 @@ public class Game extends Canvas implements Runnable {
 
 	public void init() {
 		loader = new BufferedImageLoader();
+		texture = new Texture();
+		handler = new Handler(this);
 		backgroundIMG = loader.loadImage("/background.png");
+		level1 = loader.loadImage("/levels/level1.png");
+
+		handler.loadImageLoad(level1);
 	}
 
 	@Override
@@ -86,9 +96,14 @@ public class Game extends Canvas implements Runnable {
 		Graphics g = bs.getDrawGraphics();
 
 		g.drawImage(backgroundIMG, 0, 0, null);
+		handler.render(g);
 
 		g.dispose();
 		bs.show();
+	}
+
+	public Texture getTexture() {
+		return texture;
 	}
 
 	public static void main(String[] args) {
